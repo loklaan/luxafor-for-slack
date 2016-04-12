@@ -1,0 +1,24 @@
+{
+  "name": "luxafor-for-slack",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=4.4.2"
+  },
+  "description": "Lights up Luxafor depending on Slack statuses.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "debug": "node index.js --debug"
+  },
+  "author": "Lochlan Bunn <loklaan@gmail.com>",
+  "repository": "loklaan/luxafor-for-slack",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "dotenv": "^2.0.0",
+    "luxafor-api": "^1.0.4",
+    "slack": "^6.1.0",
+    "yargs": "^4.4.0"
+  }
+}
