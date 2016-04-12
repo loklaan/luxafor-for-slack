@@ -11,17 +11,20 @@ Currently turns green, unless you're 'away' or 'dnd' then it will turn red.
 
 ## Install
 
-Grab this repo.
+```shell
+$ npm i -g luxafor-for-slack
+$ luxafor-for-slack
+```
 
-### Install dependencies
+## Contribute
+
+Install dependencies.
 
 ```shell
 $ npm i
 ```
 
-### Enter credentials
-
-Grab credentials:
+Enter credentials.
 
 * Create a new Slack Application from the [API page](https://api.slack.com/applications).
 * Get an API token as well. You can get one from another [API page](https://api.slack.com/web).
@@ -32,3 +35,5 @@ SLACK_TOKEN=xxxxxxx
 SLACK_CLIENT_ID=xxxxxxx
 SLACK_CLIENT_SECRET=xxxxxxx
 ```
+
+Go through the [Todo](#todo) list.
