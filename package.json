@@ -13,14 +13,20 @@
     "debug": "node index.js --debug"
   },
   "author": "Lochlan Bunn <loklaan@gmail.com>",
-  "repository": "loklaan/luxafor-for-slack",
+  "repository": "https://github.com/loklaan/luxafor-for-slack/",
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
+    "configstore": "^2.0.0",
     "dotenv": "^2.0.0",
     "luxafor-api": "^1.0.4",
+    "ora": "^0.2.1",
+    "prompt": "^1.0.0",
+    "shuffle-array": "^1.0.0",
     "slack": "loklaan/slack#47697bd",
-    "yargs": "^4.4.0",
+    "yargs": "^4.4.0"
+  },
+  "devDependencies": {
     "debug": "^2.2.0"
   }
 }

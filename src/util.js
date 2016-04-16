@@ -1,8 +1,11 @@
 const luxafor = require('luxafor-api');
 const chalk = require('chalk');
-const debugD = require('debug')('dnd');
-const debugA = require('debug')('away');
-const debugT = require('debug')('timer');
+const debug = require('./debug');
+const d = {
+  d: debug('dnd'),
+  a: debug('away'),
+  t: debug('timer'),
+};
 
 const COLORS = {
   red: '#f00',
@@ -19,17 +22,15 @@ function typeLogger(chalker, type, message) {
   console.log(chalker(` ${type} `) + ` ${message}`);
 }
 
-function hasCredentials() {
-  return process.env.SLACK_TOKEN != null &&
-    process.env.SLACK_CLIENT_ID != null &&
-    process.env.SLACK_CLIENT_SECRET;
-}
-
 function printHello() {
   console.log('\n');
-  console.log('  ' + chalk.bgRed('                       '));
-  console.log('  ' + chalk.bold.white.bgRed('   Luxafor for Slack   '));
-  console.log('  ' + chalk.bgRed('                       '));
+  console.log('  ' + chalk.bgBlue('     ') + chalk.bgCyan('                   ') + chalk.bgGreen('     '));
+  console.log('  ' + chalk.bgBlue('     ') + chalk.bgCyan('                   ') + chalk.bgGreen('     '));
+  console.log('  ' + chalk.bgBlue('     ') + chalk.bold.black.bgWhite('                   ') + chalk.bgYellow('     '));
+  console.log('  ' + chalk.bgBlue('     ') + chalk.bold.black.bgWhite(' Luxafor for Slack ') + chalk.bgYellow('     '));
+  console.log('  ' + chalk.bgBlue('     ') + chalk.bold.black.bgWhite('                   ') + chalk.bgYellow('     '));
+  console.log('  ' + chalk.bgMagenta('     ') + chalk.bgRed('                        '));
+  console.log('  ' + chalk.bgMagenta('     ') + chalk.bgRed('                        '));
   console.log('\n');
 }
 
@@ -41,7 +42,7 @@ function configureDndTimer(state, startUnixTs, endUnixTs) {
 
   if (nowUnixTs > startUnixTs) {
     if (endUnixTs > nowUnixTs) {
-      debugT(`starting ${TIMER_OFF}, to trigger at ${new Date(endUnixTs * 1000)}`);
+      d.t(`starting ${TIMER_OFF}, to trigger at ${new Date(endUnixTs * 1000)}`);
       // When the timestamp is between start and end, set dnd to true and run a
       // timeout to then set it false (on the end ts)
       setDnd(state, true);
@@ -68,7 +69,7 @@ function configureDndTimer(state, startUnixTs, endUnixTs) {
       setDnd(state, false);
     };
   } else {
-    debugT(`starting ${TIMER_ON}, to trigger at ${new Date(startUnixTs * 1000)}`);
+    d.t(`starting ${TIMER_ON}, to trigger at ${new Date(startUnixTs * 1000)}`);
     // When the timestamp is below bounds, set dnd to false, and run a timeout
     // to then set it to true (on the start ts)
     setDnd(state, false);
@@ -87,7 +88,7 @@ function configureDndTimer(state, startUnixTs, endUnixTs) {
 }
 
 function setDnd(state, bool) {
-  debugD(`${bool ? 'enabled' : 'disabled'}`);
+  d.d(`${bool ? 'enabled' : 'disabled'}`);
   state.dnd = !!bool;
   processLuxaforColor(state);
 }
@@ -95,7 +96,7 @@ function setDnd(state, bool) {
 function setAway(state, bool) {
   bool = !!bool;
   if (state.away === bool) return;
-  debugA(`${bool ? 'enabled' : 'disabled'}`);
+  d.a(`${bool ? 'enabled' : 'disabled'}`);
   state.away = bool;
   processLuxaforColor(state);
 
@@ -121,7 +122,7 @@ function handleDnd(state, enabled, startUnixTs, endUnixTs) {
   const nowUnixTs = getNowUnixTs();
   const shouldRunDndTimer = enabled;
 
-  debugT(`${shouldRunDndTimer ? 'configuring' : 'skipping'} dnd timer`);
+  d.t(`${shouldRunDndTimer ? 'configuring' : 'skipping'} dnd timer`);
   if (shouldRunDndTimer) {
       configureDndTimer(state, startUnixTs, endUnixTs);
   }
@@ -155,5 +156,4 @@ module.exports = {
   setAway: setAway,
   isAway: isAway,
   processLuxaforColor: processLuxaforColor,
-  hasCredentials: hasCredentials,
 };
