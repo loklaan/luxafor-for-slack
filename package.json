@@ -20,9 +20,7 @@
     "dotenv": "^2.0.0",
     "luxafor-api": "^1.0.4",
     "slack": "loklaan/slack#47697bd",
-    "yargs": "^4.4.0"
-  },
-  "devDependencies": {
+    "yargs": "^4.4.0",
     "debug": "^2.2.0"
   }
 }
