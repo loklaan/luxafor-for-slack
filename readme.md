@@ -7,7 +7,7 @@
 
 Make your [Luxafor](http://luxafor.com/) light change colours in sync with your [Slack](https://slack.com/) statuses.
 
-**Green**: Active
+**Green**: Active  
 **Red**: Away / Do Not Disturb
 
 ## Install
