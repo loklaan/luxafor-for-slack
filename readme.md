@@ -3,11 +3,12 @@
   <br>
 </p>
 
-#### Luxafor for Slack
+#### Luxafor for Slack CLI
 
 Make your [Luxafor](http://luxafor.com/) light change colours in sync with your [Slack](https://slack.com/) statuses.
 
-Currently turns green, unless you're 'away' or 'dnd' then it will turn red.
+**Green**: Active
+**Red**: Away / Do Not Disturb
 
 ## Install
 
@@ -16,7 +17,7 @@ npm i -g luxafor-for-slack
 luxafor-for-slack
 ```
 
-## Credentials
+### Credentials
 
 The following Slack API credentials are required to use this program:
 
