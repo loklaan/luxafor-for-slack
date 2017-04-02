@@ -5,6 +5,8 @@
 
 #### Luxafor for Slack CLI
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/loklaan/luxafor-for-slack.svg)](https://greenkeeper.io/)
+
 Make your [Luxafor](http://luxafor.com/) light change colours in sync with your [Slack](https://slack.com/) statuses.
 
 **Green**: Active  
