@@ -87,6 +87,22 @@ function configureDndTimer(state, startUnixTs, endUnixTs) {
   }
 }
 
+function setDndTimerDisabled(state) {
+  clearTimeout(dndTimer);
+  clearTimeout(dndQueueTimer);
+
+  setDnd(state, false);
+
+  setTimeout(function() {
+      typeLogger(
+        chalk.bold.black.bgYellow,
+        TYPE_DND,
+        `Disabled.`
+      );
+    }, 50);
+}
+
+
 function setDnd(state, bool) {
   d.d(`${bool ? 'enabled' : 'disabled'}`);
   state.dnd = !!bool;
@@ -125,6 +141,9 @@ function handleDnd(state, enabled, startUnixTs, endUnixTs) {
   d.t(`${shouldRunDndTimer ? 'configuring' : 'skipping'} dnd timer`);
   if (shouldRunDndTimer) {
       configureDndTimer(state, startUnixTs, endUnixTs);
+  }
+  else {
+    setDndTimerDisabled(state);
   }
 }
 
