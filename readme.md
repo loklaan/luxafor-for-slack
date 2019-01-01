@@ -5,6 +5,8 @@
 
 #### Luxafor for Slack CLI
 
+[![Maintainer Wanted](https://img.shields.io/badge/maintainer-wanted-red.svg)](https://github.com/loklaan/luxafor-for-slack/issues/new?title=Application:+Adopt+Project)
+
 Make your [Luxafor](http://luxafor.com/) light change colours in sync with your [Slack](https://slack.com/) statuses.
 
 **Green**: Active  
